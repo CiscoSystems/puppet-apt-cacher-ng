@@ -175,7 +175,7 @@ ExTreshold: 4
 # DontCacheRequested: linux-.*_10\...\.Custo._i386
 # Example usecase: exclude popular private IP ranges from caching
 # DontCacheRequested: 192.168.0 ^10\..* 172.30
-<% if $broken_if_range == true %>
+<% if $dont_cache_volatile == true %>
 DontCacheRequested: (^|.*?/)(Index|Packages(\.gz|\.bz2|\.lzma|\.xz)?|InRelease|Release|Release\.gpg|Sources(\.gz|\.bz2|\.lzma|\.xz)?|release|index\.db-.*\.gz|Contents-[^/]*(\.gz|\.bz2|\.lzma|\.xz)?|pkglist[^/]*\.bz2|rclist[^/]*\.bz2|/meta-release[^/]*|Translation[^/]*(\.gz|\.bz2|\.lzma|\.xz)?|MD5SUMS|SHA1SUMS|((setup|setup-legacy)(\.ini|\.bz2|\.hint)(\.sig)?)|mirrors\.lst|repo(index|md)\.xml(\.asc|\.key)?|directory\.yast|products|content(\.asc|\.key)?|media|filelists\.xml\.gz|filelists\.sqlite\.bz2|repomd\.xml|packages\.[a-zA-Z][a-zA-Z]\.gz|info\.txt|license\.tar\.gz|license\.zip|.*\.db(\.tar\.gz)?|.*\.files\.tar\.gz|.*\.abs\.tar\.gz|metalink\?repo|.*prestodelta\.xml\.gz)$|/dists/.*/installer-[^/]+/[^0-9][^/]+/images/.*
 <% end %>
 #
@@ -278,3 +278,6 @@ DontCacheRequested: (^|.*?/)(Index|Packages(\.gz|\.bz2|\.lzma|\.xz)?|InRelease|R
 # default value is 0 if ForceManaged is used and 5 otherwise.
 #
 # RedirMax: 5
+<% if avoid_if_range == true %>
+VfileUseRangeOps: 0
+<% end %>

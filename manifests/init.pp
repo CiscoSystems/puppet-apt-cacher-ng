@@ -1,6 +1,7 @@
 class apt-cacher-ng (
 	$proxy = "",
-    $broken_if_range = false) {
+    $dont_cache_volatile = false,
+    $avoid_if_range = false) {
 
 	package { apt-cacher-ng:
 		ensure => present }
